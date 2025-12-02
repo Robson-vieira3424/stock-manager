@@ -58,7 +58,6 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-<<<<<<< HEAD
             <scope>runtime</scope>
         </dependency>
 
@@ -70,10 +69,6 @@
             </dependency>
 
 
-=======
-        </dependency>
-
->>>>>>> b74d7b893c647c3d2e5f21ebac44217077ddaed1
 
 		<dependency>
 			<groupId>org.springdoc</groupId>
@@ -87,7 +82,7 @@
 			<scope>test</scope>
 		</dependency>
 
-	</dependencies>
+    </dependencies>
 
 	<build>
 		<plugins>
