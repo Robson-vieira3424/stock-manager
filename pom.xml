@@ -58,6 +58,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+<<<<<<< HEAD
             <scope>runtime</scope>
         </dependency>
 
@@ -69,6 +70,10 @@
             </dependency>
 
 
+=======
+        </dependency>
+
+>>>>>>> b74d7b893c647c3d2e5f21ebac44217077ddaed1
 
 		<dependency>
 			<groupId>org.springdoc</groupId>
@@ -81,28 +86,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.testcontainers</groupId>
-			<artifactId>mysql</artifactId>
-			<version>1.19.7</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.testcontainers</groupId>
-			<artifactId>junit-jupiter</artifactId>
-			<version>1.19.7</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>io.rest-assured</groupId>
-			<artifactId>rest-assured</artifactId>
-			<version>5.4.0</version>
-			<scope>test</scope>
-		</dependency>
-
 
 	</dependencies>
 
