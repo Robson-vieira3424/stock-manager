@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import com.StockManager.Model.DTO.MovementDTO;
 import com.StockManager.Services.MovementsService;
 
-
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/moviments")
 public class MovementsController {
