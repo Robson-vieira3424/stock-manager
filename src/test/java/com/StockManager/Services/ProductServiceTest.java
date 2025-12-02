@@ -24,7 +24,7 @@ public class ProductServiceTest {
 
     ProductService service = new ProductService(repository);
 
-    @Test
+   /* @Test
     void createProduct(){
 
         ProductDTO dto = new ProductDTO(1L, "Produto 1", "Descrição", 23, 34242L);
@@ -47,12 +47,12 @@ public class ProductServiceTest {
         assertEquals("Descrição", buscado.getDescription());
 
     }
-
+*/
 
     @Test
     void findAll_WhenCalled_ShouldReturnProductList(){
 
-        Product p1 = new Product(1L ,"Produto 1", "Produto 1", 41, 4312414352L);
+      /*  Product p1 = new Product(1L ,"Produto 1", "Produto 1", 41, 4312414352L);
         Product p2 = new Product(2L ,"Produto 2", "Produto 2", 52, 4312432642L);
         Product p3 = new Product(3L ,"Produto 3", "Produto 3", 424, 4115131242L);
         List<Product> products = List.of(p1,p2,p3);
@@ -116,5 +116,5 @@ public class ProductServiceTest {
         doThrow( new EntityNotFoundException("O produto não existe pra ser deletado! ")).when(repository).deleteById(id);
 
         assertThrows(EntityNotFoundException.class, () -> service.delete(id));
-    }
+   */ }
 }

@@ -1,5 +1,7 @@
 package com.StockManager.Services;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +9,7 @@ import com.StockManager.Exceptions.InsufficientQuantityException;
 import com.StockManager.Exceptions.ProdutNotFoudException;
 import com.StockManager.Model.HandlingType;
 import com.StockManager.Model.Product;
+import com.StockManager.Model.StatusProduct;
 import com.StockManager.Repositories.MovementsRepository;
 import com.StockManager.Repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,22 +49,40 @@ public class MovementsService {
 	}
 	@Transactional
 	public MovementDTO create(MovementDTO dto) {
-		Product product = pRepository.findById(dto.getProductId()).orElseThrow(() -> new ProdutNotFoudException("Produto não encontrado"));
+		Product product = pRepository.findById(dto.getProductId()).orElseThrow(
+                () -> new ProdutNotFoudException("Produto não encontrado"));
 
 		if(dto.getType() == HandlingType.INPUT){
 		product.setAmount(product.getAmount() + dto.getAmount());
 		}
 		else if (dto.getType() == HandlingType.OUTPUT){
-			if (product.getAmount() > dto.getAmount()) {
+			if (product.getAmount() >= dto.getAmount()) {
 				product.setAmount(product.getAmount() - dto.getAmount());
 			}else{
-				throw new InsufficientQuantityException("Quantidade de produto insuficiente!");
+				throw new InsufficientQuantityException("Quantidade de produto insuficiente para realiazar movimentação!");
 			}
 		}
+        if (product.getAmount() == 0) {
+            product.setStatus(StatusProduct.Sem_Estoque);
+
+
+        } else if (product.getAmount() <= product.getMin()) {
+            product.setStatus(StatusProduct.Estoque_Baixo);
+
+        } else {
+            product.setStatus(StatusProduct.Em_Estoque);
+        }
+
 		pRepository.save(product);
-		mRepository.save(ModelMapperConfig.parseObjects(dto, Movements.class));
+
+        Movements movementEntity = ModelMapperConfig.parseObjects(dto, Movements.class);
+
+        movementEntity.setMoveDate(new Date());
+
+        mRepository.save(movementEntity);
+
 		return dto;
-		
+
 	}
 	
 	public void delete (Long id) {

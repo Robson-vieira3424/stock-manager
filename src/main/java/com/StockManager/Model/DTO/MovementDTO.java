@@ -5,8 +5,13 @@ import java.util.Date;
 import java.util.Objects;
 
 import com.StockManager.Model.HandlingType;
+import lombok.*;
 
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
 public class MovementDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -22,66 +27,6 @@ public class MovementDTO implements Serializable {
 		this.type = type;
 		this.amount = amount;
 
-	}
-
-	public MovementDTO() {}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id){
-		this.id = id;
-	}
-
-	public Long getProductId() {
-		return productId;
-	}
-
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
-
-	public HandlingType getType() {
-		return type;
-	}
-
-	public void setType(HandlingType type) {
-		this.type = type;
-	}
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
-
-	public Date getMoveDate() {
-		return moveDate;
-	}
-
-	public void setMoveDate(Date moveDate) {
-		this.moveDate = moveDate;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(amount, id, moveDate, productId, type);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MovementDTO other = (MovementDTO) obj;
-		return amount == other.amount && Objects.equals(id, other.id) && Objects.equals(moveDate, other.moveDate)
-				&& Objects.equals(productId, other.productId) && type == other.type;
 	}
 
 }

@@ -34,7 +34,7 @@ public class ProductService {
 		return ModelMapperConfig.parseObjects(pRepository.save(entity), ProductDTO.class);
 	}
 
-	public ProductDTO update(ProductDTO dto) {
+	/*public ProductDTO update(ProductDTO dto) {
 		Product entity = pRepository.findById(dto.getId()).orElseThrow(() -> new ProdutNotFoudException("Produto não encontrado!"));
 		entity.setName(dto.getName());
 		entity.setAmount(dto.getAmount());
@@ -42,7 +42,7 @@ public class ProductService {
 		entity.setHeritage(dto.getHeritage());
 		
 		return ModelMapperConfig.parseObjects(pRepository.save(entity), ProductDTO.class) ;
-	}
+	}*/
 
 	public void delete(Long id) {
 		 pRepository.deleteById(id);
