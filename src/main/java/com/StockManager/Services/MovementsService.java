@@ -53,20 +53,20 @@ public class MovementsService {
                 () -> new ProdutNotFoudException("Produto não encontrado"));
 
 		if(dto.getType() == HandlingType.INPUT){
-		product.setAmount(product.getAmount() + dto.getAmount());
+		product.setQuantity(product.getQuantity() + dto.getAmount());
 		}
 		else if (dto.getType() == HandlingType.OUTPUT){
-			if (product.getAmount() >= dto.getAmount()) {
-				product.setAmount(product.getAmount() - dto.getAmount());
+			if (product.getQuantity() >= dto.getAmount()) {
+				product.setQuantity(product.getQuantity() - dto.getAmount());
 			}else{
 				throw new InsufficientQuantityException("Quantidade de produto insuficiente para realiazar movimentação!");
 			}
 		}
-        if (product.getAmount() == 0) {
+        if (product.getQuantity() == 0) {
             product.setStatus(StatusProduct.Sem_Estoque);
 
 
-        } else if (product.getAmount() <= product.getMin()) {
+        } else if (product.getQuantity() <= product.getMin()) {
             product.setStatus(StatusProduct.Estoque_Baixo);
 
         } else {

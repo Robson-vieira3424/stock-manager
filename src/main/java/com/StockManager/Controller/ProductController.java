@@ -19,7 +19,7 @@ public class ProductController {
 	private ProductService pService;
 	
 	@GetMapping("/{id}")
-	public ProductDTO findProduct(@RequestParam Long id) {
+	public ProductDTO findProduct(@PathVariable Long id) {
 		return pService.findById(id);
 	}
 	

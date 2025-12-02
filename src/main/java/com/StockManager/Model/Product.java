@@ -21,15 +21,15 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false, unique = true, name = "name")
+	@Column(nullable = false, unique = true)
 	private String name;
 
-	@Column(nullable = false, name = "amount")
-	private int amount;
+	@Column(nullable = false)
+	private Long quantity;
 
     @Enumerated(EnumType.STRING)
     private StatusProduct status;
 
     @Column
-    private long min;
+    private Long min;
 }
