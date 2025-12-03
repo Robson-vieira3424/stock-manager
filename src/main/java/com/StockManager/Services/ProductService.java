@@ -30,6 +30,7 @@ public class ProductService {
 		return ModelMapperConfig.parseList(pRepository.findAll(), ProductDTO.class);
 	}
 
+
     public ProductInfoCardsDTO findInfoCards(){
 
         Long totalItens =pRepository.countTotalProducts();

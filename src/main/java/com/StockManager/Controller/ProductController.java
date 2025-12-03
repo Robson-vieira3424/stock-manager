@@ -33,6 +33,8 @@ public class ProductController {
     public ProductInfoCardsDTO findInfoCards(){
        return pService.findInfoCards();
     }
+
+
 	@PostMapping()
 	public ProductDTO createProduct(@RequestBody ProductDTO dto) {
 
