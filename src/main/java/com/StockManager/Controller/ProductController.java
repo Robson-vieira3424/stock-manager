@@ -2,6 +2,7 @@ package com.StockManager.Controller;
 
 import java.util.List;
 
+import com.StockManager.Model.DTO.ProductInfoCardsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,11 @@ public class ProductController {
 	public List<ProductDTO> findAll() {
 		return pService.findAll();
 	}
-	
+
+    @GetMapping("/infos")
+    public ProductInfoCardsDTO findInfoCards(){
+       return pService.findInfoCards();
+    }
 	@PostMapping()
 	public ProductDTO createProduct(@RequestBody ProductDTO dto) {
 

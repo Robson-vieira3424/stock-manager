@@ -26,7 +26,6 @@ public class Movements implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 
 	@Column(name = "product_id")
 	private Long productId;
@@ -34,7 +33,12 @@ public class Movements implements Serializable {
 	@Column(name = "type")
 	@Enumerated(EnumType.STRING)
 	private HandlingType type;
-	
+
+    @Column(nullable = false)
+    private String categoria;
+
+    private String observation;
+
 	@Column(name = "amount", nullable = false)
 	private int amount;
 	
@@ -42,73 +46,103 @@ public class Movements implements Serializable {
 	@Column(name = "moveDate")
 	private Date moveDate;
 
-	public Movements() {
-	}
+    private String destination;
 
-	public Movements(Long id, Long productId, HandlingType type, int amount) {
 
-		this.id = id;
-		this.productId = productId;
-		this.type = type;
-		this.amount = amount;
-	}
 
-	public Long getId() {
-		return id;
-	}
+    public Movements(Long productId, Long id, HandlingType type, String categoria, String observation, int amount, Date moveDate, String destination) {
+        this.productId = productId;
+        this.id = id;
+        this.type = type;
+        this.categoria = categoria;
+        this.observation = observation;
+        this.amount = amount;
+        this.moveDate = moveDate;
+        this.destination=destination;
+    }
+    public Movements(){}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Long getProduct() {
-		return productId;
-	}
+    public Long getProductId() {
+        return productId;
+    }
 
-	public void setProduct(Long product) {
-		this.productId = product;
-	}
+    public HandlingType getType() {
+        return type;
+    }
 
-	public HandlingType getType() {
-		return type;
-	}
+    public String getCategoria() {
+        return categoria;
+    }
 
-	public void setType(HandlingType type) {
-		this.type = type;
-	}
+    public String getObservacoes() {
+        return observation;
+    }
 
-	public int getAmount() {
-		return amount;
-	}
+    public int getAmount() {
+        return amount;
+    }
 
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
+    public Date getMoveDate() {
+        return moveDate;
+    }
 
-	public Date getMoveDate() {
-		return moveDate;
-	}
+    public String getDestination() {
+        return destination;
+    }
 
-	public void setMoveDate(Date moveDate) {
-		this.moveDate = moveDate;
-	}
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(amount, id, moveDate, productId, type);
-	}
+    public String getObservation() {
+        return observation;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Movements other = (Movements) obj;
-		return amount == other.amount && Objects.equals(id, other.id) && Objects.equals(moveDate, other.moveDate)
-				&& Objects.equals(productId, other.productId) && type == other.type;
-	}
+    public void setObservation(String observation) {
+        this.observation = observation;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public void setType(HandlingType type) {
+        this.type = type;
+    }
+
+    public void setObservacoes(String observacoes) {
+        this.observation = observacoes;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public void setMoveDate(Date moveDate) {
+        this.moveDate = moveDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Movements movements = (Movements) o;
+        return amount == movements.amount && Objects.equals(id, movements.id) && Objects.equals(productId, movements.productId) && type == movements.type && Objects.equals(categoria, movements.categoria) && Objects.equals(observation, movements.observation) && Objects.equals(moveDate, movements.moveDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, productId, type, categoria, observation, amount, moveDate);
+    }
 }

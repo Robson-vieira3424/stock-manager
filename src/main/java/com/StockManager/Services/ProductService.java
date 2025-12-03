@@ -2,6 +2,7 @@ package com.StockManager.Services;
 
 import java.util.List;
 
+import com.StockManager.Model.DTO.ProductInfoCardsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,12 +30,22 @@ public class ProductService {
 		return ModelMapperConfig.parseList(pRepository.findAll(), ProductDTO.class);
 	}
 
+    public ProductInfoCardsDTO findInfoCards(){
+
+        Long totalItens =pRepository.countTotalProducts();
+        Long unidadesDisponiveis = pRepository.sumTotalInventoryQuantity();
+        Long quantidadeItensDisponiveis = pRepository.countByQuantityGreaterThan(0L);
+        Long estoqueBaixo = pRepository.countProductsBelowMinimum();
+
+        return new ProductInfoCardsDTO(totalItens, unidadesDisponiveis, quantidadeItensDisponiveis, estoqueBaixo);
+    }
+
 	public ProductDTO create(ProductDTO dto) {
 		Product entity = ModelMapperConfig.parseObjects(dto, Product.class);
 		return ModelMapperConfig.parseObjects(pRepository.save(entity), ProductDTO.class);
 	}
-
-	/*public ProductDTO update(ProductDTO dto) {
+    /*
+    public ProductDTO update(ProductDTO dto) {
 		Product entity = pRepository.findById(dto.getId()).orElseThrow(() -> new ProdutNotFoudException("Produto não encontrado!"));
 		entity.setName(dto.getName());
 		entity.setAmount(dto.getAmount());
