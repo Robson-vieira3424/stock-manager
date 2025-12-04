@@ -19,6 +19,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "movements")
+
 public class Movements implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -34,7 +35,7 @@ public class Movements implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private HandlingType type;
 
-    @Column(nullable = false)
+    @Column()
     private String categoria;
 
     private String observation;
@@ -42,7 +43,7 @@ public class Movements implements Serializable {
 	@Column(name = "amount", nullable = false)
 	private int amount;
 	
-	@CreationTimestamp
+
 	@Column(name = "moveDate")
 	private Date moveDate;
 
@@ -144,5 +145,19 @@ public class Movements implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id, productId, type, categoria, observation, amount, moveDate);
+    }
+
+    @Override
+    public String toString() {
+        return "Movements{" +
+                "id=" + id +
+                ", productId=" + productId +
+                ", type=" + type +
+                ", categoria='" + categoria + '\'' +
+                ", observation='" + observation + '\'' +
+                ", amount=" + amount +
+                ", moveDate=" + moveDate +
+                ", destination='" + destination + '\'' +
+                '}';
     }
 }

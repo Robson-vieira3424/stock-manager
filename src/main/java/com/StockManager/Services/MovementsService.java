@@ -49,27 +49,38 @@ public class MovementsService {
 	}
 	@Transactional
 	public MovementDTO create(MovementDTO dto) {
-		Product product = pRepository.findById(dto.getProductId()).orElseThrow(
+        System.out.println("Peguei o produto");
+        System.out.println(dto);
+
+        Product product = pRepository.findById(dto.getProductId()).orElseThrow(
                 () -> new ProdutNotFoudException("Produto não encontrado"));
 
-		if(dto.getType() == HandlingType.INPUT){
+        System.out.println("Peguei o produto");
+
+        if(dto.getType() == HandlingType.INPUT){
 		product.setQuantity(product.getQuantity() + dto.getAmount());
 		}
-		else if (dto.getType() == HandlingType.OUTPUT){
+
+        else if (dto.getType() == HandlingType.OUTPUT){
 			if (product.getQuantity() >= dto.getAmount()) {
 				product.setQuantity(product.getQuantity() - dto.getAmount());
 			}else{
 				throw new InsufficientQuantityException("Quantidade de produto insuficiente para realiazar movimentação!");
 			}
 		}
+
         if (product.getQuantity() == 0) {
             product.setStatus(StatusProduct.Sem_Estoque);
 
 
-        } else if (product.getQuantity() <= product.getMin()) {
+        }
+
+        else if (product.getQuantity() <= product.getMin()) {
             product.setStatus(StatusProduct.Estoque_Baixo);
 
-        } else {
+        }
+
+        else {
             product.setStatus(StatusProduct.Em_Estoque);
         }
 
@@ -77,8 +88,8 @@ public class MovementsService {
 
         Movements movementEntity = ModelMapperConfig.parseObjects(dto, Movements.class);
 
-        movementEntity.setMoveDate(new Date());
-
+        System.out.println(movementEntity);
+        movementEntity.setId(null);
         mRepository.save(movementEntity);
 
 		return dto;

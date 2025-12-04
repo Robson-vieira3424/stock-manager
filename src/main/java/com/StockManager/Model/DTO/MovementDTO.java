@@ -15,12 +15,20 @@ import lombok.*;
 public class MovementDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Long id;
+
 	private Long productId;
 	private HandlingType type;
 	private int amount;
 	private Date moveDate;
+    private String categoria;
 
-
-
+    @Override
+    public String toString() {
+        return "MovementDTO{" +
+                "productId=" + productId +
+                ", type=" + type +
+                ", amount=" + amount +
+                ", moveDate=" + moveDate +
+                '}';
+    }
 }
