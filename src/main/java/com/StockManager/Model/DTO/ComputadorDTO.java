@@ -7,7 +7,6 @@ import lombok.Data;
 
 @Data
 public class ComputadorDTO {
-    private Long id;
 
     private String patrimonio;
 

@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 public class MonitorDTO {
-    private Long id;
+
 
     private String patrimonio;
 
@@ -19,3 +19,4 @@ public class MonitorDTO {
 
     private String tamanho;
 }
+
