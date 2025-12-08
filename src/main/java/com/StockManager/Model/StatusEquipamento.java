@@ -1,0 +1,8 @@
+package com.StockManager.Model;
+
+public enum StatusEquipamento {
+    DISPONIVEL, //ESTÁ NO ESTOQUE E FUNCIONA
+    EM_USO,     //FUNCIONA E ESTÁ ALOCADO
+    DEFEITO,    //NÃO FUNCIONA E ESTA NO ESTOQUE
+    MANUTENCAO  //PASSA POR MANUTENÇÃO NO DEPARTAMENTO
+}
