@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = "*")
 @RestController()
 @RequestMapping("/estacao")
@@ -16,9 +18,12 @@ public class EstacionWorkController {
     private EstacaoTrabalhoService service;
 
     @PostMapping
-    public void createEstacionWork(@RequestBody EstacaoTrabalhoDTO dto){
+    public void criarEStacaoTrabalho(@RequestBody EstacaoTrabalhoDTO dto){
         service.criarEstacaoTrabalho(dto);
 
     }
-
+    @GetMapping
+    public List<EstacaoTrabalhoDTO> getEstacoesTrabalho(){
+        return service.buscarTudo();
+    }
 }

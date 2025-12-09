@@ -5,6 +5,7 @@ import com.StockManager.Model.DTO.EstabilizadorDTO;
 import com.StockManager.Model.DTO.MonitorDTO;
 import com.StockManager.Model.Estabilizador;
 import com.StockManager.Model.Monitor;
+import com.StockManager.Model.StatusEquipamento;
 import com.StockManager.Repositories.EstabilizadorRepository;
 import com.StockManager.Repositories.MonitorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class MonitorService {
 
     public Monitor cadastrarMonitor(MonitorDTO dto){
         Monitor entity = ModelMapperConfig.parseObjects(dto, Monitor.class);
+        entity.setStatusEquipamento(StatusEquipamento.EM_USO);
+
         return repository.save(entity);
     }
 }

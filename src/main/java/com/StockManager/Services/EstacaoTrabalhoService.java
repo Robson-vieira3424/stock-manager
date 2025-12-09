@@ -1,5 +1,6 @@
 package com.StockManager.Services;
 
+import com.StockManager.Config.ModelMapperConfig;
 import com.StockManager.Model.Computador;
 import com.StockManager.Model.DTO.ComputadorDTO;
 import com.StockManager.Model.DTO.EstabilizadorDTO;
@@ -13,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
 @Service
 public class EstacaoTrabalhoService {
 
@@ -53,4 +57,9 @@ public class EstacaoTrabalhoService {
 
 
     }
+
+    public List<EstacaoTrabalhoDTO> buscarTudo(){
+        return ModelMapperConfig.parseList(estacaoTrabalhoRepository.findAll(), EstacaoTrabalhoDTO.class) ;
+    }
+
 }
