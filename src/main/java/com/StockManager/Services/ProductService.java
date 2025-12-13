@@ -47,6 +47,7 @@ public class ProductService {
 
 	public ProductDTO create(ProductDTO dto) {
 		Product entity = ModelMapperConfig.parseObjects(dto, Product.class);
+        entity.setName(capitalizeWords(entity.getName()));
 		return ModelMapperConfig.parseObjects(pRepository.save(entity), ProductDTO.class);
 	}
     /*
@@ -63,4 +64,19 @@ public class ProductService {
 	public void delete(Long id) {
 		 pRepository.deleteById(id);
 	}
+
+    public static String capitalizeWords(String texto) {
+        String[] palavras = texto.split(" ");
+        StringBuilder sb = new StringBuilder();
+
+        for (String palavra : palavras) {
+            if (palavra.length() > 0) {
+                sb.append(palavra.substring(0, 1).toUpperCase())
+                        .append(palavra.substring(1).toLowerCase())
+                        .append(" ");
+            }
+        }
+
+        return sb.toString().trim();
+    }
 }
