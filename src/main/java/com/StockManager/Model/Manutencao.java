@@ -27,7 +27,7 @@ public class Manutencao {
     @OneToMany(mappedBy = "manutencao", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemManutencao> pecasUtilizadas = new ArrayList<>();
 
-    @Column(columnDefinition = "TEXT") // Permite textos longos
+    @Column(columnDefinition = "TEXT")
     private String descricaoProblema;
 
     @Enumerated(EnumType.STRING)
@@ -39,11 +39,18 @@ public class Manutencao {
     @Enumerated(EnumType.STRING)
     private Prioridade prioridade;
 
+    private Boolean utilizouPeca;
+
     @Column(columnDefinition = "TEXT")
     private String solucaoAplicada;
 
+    @Column(columnDefinition = "TEXT")
+    private String observacoes;
+
     @CreationTimestamp
     private Date dataInicio;
+
+    private Date dataPrevisao;
 
     private Date dataFinalizado;
 
