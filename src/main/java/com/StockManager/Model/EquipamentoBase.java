@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
-@MappedSuperclass  // Indica ao JPA que essa classe não sera uma entidade, apenas um molde para os filhos que serão
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED) // INDICA AO JPA QUE MÃE E FILHOS SAO UNIDOS PELO ID
 public abstract class EquipamentoBase {
 
     @Id

@@ -12,6 +12,7 @@ public class Monitor extends EquipamentoBase {
     private String tamanho;
 
     public Monitor(String tamanho) {
+        super();
         this.tamanho = tamanho;
     }
 
