@@ -19,15 +19,18 @@ public class Computador extends EquipamentoBase{
 
     private String Sistema;
 
+    private String nome;
+
     public Computador() {
     }
 
-    public Computador(String processador, String memoria, String armazenamento, String tipo, String sistema) {
+    public Computador(String processador, String memoria, String armazenamento, String tipo, String sistema, String nome) {
         super();
         this.processador = processador;
         this.memoria = memoria;
         this.armazenamento = armazenamento;
         this.tipo = tipo;
-        Sistema = sistema;
+        this. Sistema = sistema;
+        this.nome=nome;
     }
 }

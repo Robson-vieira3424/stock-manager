@@ -25,4 +25,6 @@ public class ComputadorDTO {
     private String tipo;
 
     private String Sistema;
+
+    private String nome;
 }
