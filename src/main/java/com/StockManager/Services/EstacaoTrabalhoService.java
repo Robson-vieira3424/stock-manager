@@ -54,7 +54,7 @@ public class EstacaoTrabalhoService {
 
         estacaoTrabalhoRepository.save(estacaoTrabalho);
 
-
+        System.out.println( dto.toString());
 
     }
 
