@@ -1,6 +1,4 @@
-package com.StockManager.Model.DTO;
-
-import lombok.*;
+package com.StockManager.Model.DTO.Responses;
 
 import java.util.Objects;
 
