@@ -1,15 +1,17 @@
 package com.StockManager.Model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 
 @Entity
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class EstacaoTrabalho {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

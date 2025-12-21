@@ -1,10 +1,13 @@
 package com.StockManager.Model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED) // INDICA AO JPA QUE MÃE E FILHOS SAO UNIDOS PELO ID
 public abstract class EquipamentoBase {
 

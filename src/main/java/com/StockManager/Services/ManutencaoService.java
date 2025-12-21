@@ -1,8 +1,10 @@
 package com.StockManager.Services;
 
+import com.StockManager.Config.ModelMapperConfig;
 import com.StockManager.Model.*;
 import com.StockManager.Model.DTO.ManutencaoDTO;
 import com.StockManager.Model.DTO.MovementDTO;
+import com.StockManager.Model.DTO.Responses.ManutencaoInfoCards;
 import com.StockManager.Repositories.EquipamentoBaseRepository;
 import com.StockManager.Repositories.ManutencaoRepository;
 import com.StockManager.Repositories.ProductRepository;
@@ -94,5 +96,23 @@ public class ManutencaoService {
         Manutencao manutencaoSalva = manutencaoRepository.save(manutencao);
         return ResponseEntity.ok(manutencaoSalva);
        }
+
+       //TODO: IMPLEMENTAR LOGICA PARA QUANDO UMA MANUTENCAO FOR CONCLUIDA E O EQUIPAMENTO NÃO TIVER RECUPERAÇÃO
+       public ManutencaoInfoCards infoPainelManutencao(){
+        String total = String.valueOf(manutencaoRepository.count()) ;
+        String emAndamento = String.valueOf(manutencaoRepository.countByStatus(String.valueOf(StatusManutencao.EM_ANDAMENTO)) ) ;
+        String aguardandoPeca =  String.valueOf(manutencaoRepository.countByStatus(String.valueOf(StatusManutencao.AGUARDANDO_PECA)) ) ;
+        String concluido  = String.valueOf(manutencaoRepository.countByStatus(String.valueOf(StatusManutencao.CONCLUIDA))) ;
+        String baixado = String.valueOf(manutencaoRepository.countByStatus(String.valueOf(StatusManutencao.CONCLUIDA_COM_BAIXA)));
+
+        return new ManutencaoInfoCards(total, emAndamento, aguardandoPeca,concluido,baixado);
+
+       }
+
+       public List<ManutencaoDTO> listarManutencoes(){
+        return ModelMapperConfig.parseList(manutencaoRepository.findAll(), ManutencaoDTO.class) ;
+       }
+
+
     }
 

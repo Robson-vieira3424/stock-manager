@@ -2,9 +2,7 @@ package com.StockManager.Model;
 
 import com.StockManager.Model.DTO.ProductDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.ArrayList;
@@ -12,7 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Manutencao {
