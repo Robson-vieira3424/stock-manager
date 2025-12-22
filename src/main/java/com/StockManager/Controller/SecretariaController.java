@@ -20,9 +20,6 @@ public class SecretariaController {
     private SecretariaService service;
 
     @Autowired
-    private DepartamentoRepository departamentoRepository;
-
-    @Autowired
     private SecretariaRepository secretariaRepository;
 
     @PostMapping
@@ -33,12 +30,6 @@ public class SecretariaController {
     @GetMapping
     public ResponseEntity<List<Secretaria>> listarSecretarias(){
         return ResponseEntity.ok().body(secretariaRepository.findAll());
-    }
-
-    @GetMapping("/{id}/departamentos")
-    public ResponseEntity<List<Departamento>> listarDepartamentosSecretaria(@PathVariable Long id){
-        List<Departamento> departamentos = departamentoRepository.findBySecretariaId(id);
-        return ResponseEntity.ok().body(departamentos);
     }
 
 }

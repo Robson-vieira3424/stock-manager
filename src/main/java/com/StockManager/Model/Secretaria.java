@@ -19,12 +19,15 @@ public class Secretaria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @Column(nullable = false, unique = true)
     private String nome;
 
-    @OneToMany(mappedBy = "secretaria", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(
+            mappedBy = "secretaria",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     private List<Departamento> departamentos = new ArrayList<>();
-
 }

@@ -21,7 +21,7 @@ public class SecretariaService {
         Secretaria secretaria = new Secretaria();
         secretaria.setNome(dto.getNome());
 
-        if(dto.getDepartamentos() != null && dto.getDepartamentos().isEmpty()){
+        if(dto.getDepartamentos() != null && !dto.getDepartamentos().isEmpty()){
 
             List<Departamento> departamentos = new ArrayList<>();
             for (String nomeDept : dto.getDepartamentos()) {
