@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/secretaria")
 public class SecretariaController {
@@ -35,7 +35,7 @@ public class SecretariaController {
         return ResponseEntity.ok().body(secretariaRepository.findAll());
     }
 
-    @GetMapping("/{id/departamentos}")
+    @GetMapping("/{id}/departamentos")
     public ResponseEntity<List<Departamento>> listarDepartamentosSecretaria(@PathVariable Long id){
         List<Departamento> departamentos = departamentoRepository.findBySecretariaId(id);
         return ResponseEntity.ok().body(departamentos);
