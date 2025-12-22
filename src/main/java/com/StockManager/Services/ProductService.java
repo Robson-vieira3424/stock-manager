@@ -2,8 +2,9 @@ package com.StockManager.Services;
 
 import java.util.List;
 
-import com.StockManager.Model.DTO.ProductInfoCardsDTO;
+
 import com.StockManager.Model.DTO.ResponseProductsCreated;
+import com.StockManager.Model.DTO.Responses.ProductInfoCardsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
