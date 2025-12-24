@@ -15,9 +15,11 @@ public class EstacaoTrabalho {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    private String secretaria;
+    @ManyToOne
+    private Secretaria secretaria;
 
-    private String setor;
+    @ManyToOne
+    private Departamento departamento;
 
     @OneToOne
     @JoinColumn(name = "computador_id", referencedColumnName = "id")

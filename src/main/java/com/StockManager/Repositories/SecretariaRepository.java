@@ -13,4 +13,6 @@ public interface SecretariaRepository extends JpaRepository< Secretaria,Long> {
 
     @EntityGraph(attributePaths = "departamentos")
     List<Secretaria> findAll();
+
+    Secretaria findByNome(String nome);
 }

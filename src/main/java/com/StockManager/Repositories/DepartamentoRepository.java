@@ -10,4 +10,6 @@ import java.util.List;
 public interface DepartamentoRepository extends JpaRepository<Departamento, Long> {
 
     List<Departamento> findBySecretariaId(Long secretairaId);
+
+    Departamento findByNome(String nome);
 }

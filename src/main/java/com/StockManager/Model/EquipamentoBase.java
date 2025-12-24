@@ -20,4 +20,12 @@ public abstract class EquipamentoBase {
 
     @Enumerated(EnumType.STRING)
     private StatusEquipamento statusEquipamento;
+
+    @ManyToOne
+    @JoinColumn(name = "secretaria_id")
+    private Secretaria secretaria;
+
+    @ManyToOne
+    @JoinColumn(name = "departamento_id")
+    private Departamento departamento;
 }

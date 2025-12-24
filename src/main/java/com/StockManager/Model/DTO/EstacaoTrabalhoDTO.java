@@ -1,8 +1,6 @@
 package com.StockManager.Model.DTO;
 
-import com.StockManager.Model.Computador;
-import com.StockManager.Model.Estabilizador;
-import com.StockManager.Model.Monitor;
+import com.StockManager.Model.*;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -13,9 +11,9 @@ public class EstacaoTrabalhoDTO {
 
     private Long Id;
 
-    private String secretaria;
+    private Long secretariaId;
 
-    private String setor;
+    private Long departamentoId;
 
     private ComputadorDTO computador;
 
